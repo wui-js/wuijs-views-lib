@@ -1,0 +1,21 @@
+# OS
+
+._*
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+# Inner
+
+.vscode
+.claude
+.npmignore
+specs
+CLAUDE.md
+MEMORY.md
+NOTES.md
+NPM.md
+
+# Trash
+
+_*

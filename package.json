@@ -1,0 +1,38 @@
+{
+	"name": "@wui-js/views",
+	"version": "0.1.0",
+	"license": "Apache-2.0",
+	"author": "Sergio E. Belmar V. <wuijs.project@gmail.com>",
+	"description": "WUI/JS Views Lib - WUI/JS Views Lib is an open-source JavaScript/CSS library that provides composite views built from WUI/JS Main Lib classes.",
+	"keywords": [
+		"ui",
+		"views",
+		"vanilla",
+		"javascript",
+		"css",
+		"wui",
+		"frontend",
+		"library"
+	],
+	"homepage": "https://wuijs.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wui-js/wuijs-views-lib.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wui-js/wuijs-views-lib/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"message/",
+		"progress/",
+		"datalist/"
+	],
+	"scripts": {
+		"prepare": "test -d .git && exit 0 || (rm -f README.md && cp NPM.md README.md && cp -r src/wui-js/views/. .)",
+		"prepack": "rm README.md && cp NPM.md README.md && cp -r src/wui-js/views/. .",
+		"postpack": "rm -f README.md && ln -s docs/README-en.md README.md && ls src/wui-js/views/ | grep -vE '^LICENSE$' | xargs rm -rf"
+	}
+}
