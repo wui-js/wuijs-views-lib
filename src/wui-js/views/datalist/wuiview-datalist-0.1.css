@@ -90,6 +90,20 @@ div.wuiview-datalist.empty > form > .header > fieldset.buttons.options > button.
 	transform: translateX(-50%);
 }
 
+div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options > button.add {
+	border-radius: var(--button-radius);
+}
+
+div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options > button.filter:not(:has(~ button.remove:not(.hidden))) {
+	border-top-right-radius: var(--button-radius);
+	border-bottom-right-radius: var(--button-radius);
+}
+
+div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options:not(:has(> button.filter:not(.hidden))) > button.remove {
+	border-top-left-radius: var(--button-radius);
+	border-bottom-left-radius: var(--button-radius);
+}
+
 div.wuiview-datalist.empty > form > .header > fieldset.buttons.options > button.add > span {
 	display: block;
 }
