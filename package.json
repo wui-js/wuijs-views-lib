@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"license": "Apache-2.0",
 	"author": "Sergio E. Belmar V. <wuijs.project@gmail.com>",
-	"description": "WUI/JS Views Lib - WUI/JS Views Lib is an open-source JavaScript/CSS library that provides composite views built from WUI/JS Main Lib classes.",
+	"description": "WUI/JS Views Lib - Open-source JavaScript/CSS library of composite views (messages, progress, data listings) built from WUI/JS Main Lib classes.",
 	"keywords": [
 		"ui",
 		"views",

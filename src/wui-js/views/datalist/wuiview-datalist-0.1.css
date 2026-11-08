@@ -21,6 +21,10 @@ div.wuiview-datalist > form > .header {
 	justify-content: center;
 }
 
+div.wuiview-datalist > form > .header > fieldset {
+	margin: 0;
+}
+
 div.wuiview-datalist > form > .header > fieldset.buttons {
 	width: auto;
 	min-width: 98px;
@@ -40,9 +44,9 @@ div.wuiview-datalist > form > .header > fieldset.buttons.options {
 }
 
 div.wuiview-datalist > form > .header > fieldset.buttons > button {
-	width: var(--wui-button-default-height);
+	width: var(--wuiview-datalist-header-button-width);
 	min-width: 0;
-	height: var(--wui-button-default-height);
+	height: var(--wuiview-datalist-header-button-height);
 	margin: 0;
 	padding: 0;
 }
@@ -64,13 +68,14 @@ div.wuiview-datalist > form > .header > fieldset.buttons.options > button.add > 
 	display: none;
 }
 
-div.wuiview-datalist > form > .header > fieldset.search {
+div.wuiview-datalist > form > .header > fieldset.search,
+div.wuiview-datalist > form > .header > fieldset.search > .field {
 	margin: 0 !important;
 }
 
 div.wuiview-datalist > form > .body > .message {
 	position: absolute;
-	top: 45%;
+	top: 40%;
 	left: 50%;
 	display: none;
 	white-space: nowrap;
@@ -85,23 +90,10 @@ div.wuiview-datalist.empty > form > .header > fieldset.buttons.options > button.
 	position: absolute;
 	top: calc(50vh - 34px - 40px);
 	left: 50%;
+	width: auto;
 	min-width: var(--wui-button-default-minwidth);
 	margin-top: 20px;
 	transform: translateX(-50%);
-}
-
-div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options > button.add {
-	border-radius: var(--button-radius);
-}
-
-div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options > button.filter:not(:has(~ button.remove:not(.hidden))) {
-	border-top-right-radius: var(--button-radius);
-	border-bottom-right-radius: var(--button-radius);
-}
-
-div.wuiview-datalist.empty > form > .header.join-buttons > fieldset.buttons.options:not(:has(> button.filter:not(.hidden))) > button.remove {
-	border-top-left-radius: var(--button-radius);
-	border-bottom-left-radius: var(--button-radius);
 }
 
 div.wuiview-datalist.empty > form > .header > fieldset.buttons.options > button.add > span {
@@ -127,14 +119,20 @@ div.wuiview-datalist.table > form > .body > .wui-list {
 
 @media screen and (max-width: 767px) {
 
+	div.wuiview-datalist > form > .header > fieldset.buttons > button {
+		width: var(--wuiview-datalist-mobile-header-button-width);
+		height: var(--wuiview-datalist-mobile-header-button-height);
+	}
+
 	div.wuiview-datalist > form > .header > fieldset.search {
+		--wui-form-mobile-input-height: var(--wuiview-datalist-mobile-header-button-height);
 		width: auto;
 		min-width: 0;
 		padding: 0;
 		flex: 1;
 	}
 
-	div.wuiview-datalist > form > .header > fieldset.buttons.options:has(> button.add):not(:has(> .wui-selectpicker.menu .option:not(.hidden, [data-value=""], [data-value^="select-"], [data-value^="unselect-"], [data-value="add"]))) > .wui-selectpicker.menu,
+	div.wuiview-datalist > form > .header > fieldset.buttons.options:not(:has(> .wui-selectpicker.menu .option:not(.hidden, [data-value=""], [data-value^="select-"], [data-value^="unselect-"], [data-value="add"]))) > .wui-selectpicker.menu,
 	div.wuiview-datalist.dual > form > .body > .wui-table {
 		display: none;
 	}

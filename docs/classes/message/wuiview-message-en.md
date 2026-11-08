@@ -20,8 +20,8 @@ Modal message view (information, confirmation, warning, error, etc.) with icon, 
 
 | Class       | Version | Description |
 | ----------- |:-------:| ----------- |
-| `WUIModal`  | `0.13`  | Modal in `message` mode that holds the view. Required. |
-| `WUIButton` | `0.16`  | Cancel and accept buttons. Required. |
+| `WUIModal`  | `0.14`  | Modal in `message` mode that holds the view. Required. |
+| `WUIButton` | `0.17`  | Cancel and accept buttons. Required. |
 | `WUIIcon`   | `0.14`  | Message and accept button icons. Required. |
 | `WUIFade`   | `0.7`   | Accept button loading icon animation (`acceptButtonLockOnAccept`). Required. |
 
@@ -49,7 +49,9 @@ The constructor creates the modal (`div.wui-modal.message`) at the end of `<body
 | acceptButtonHidden       | `boolean`        | `false`               | (get/set)<br><br>Hides the accept button. |
 | acceptButtonText         | `string`         | `""`                  | (get/set)<br><br>Accept button text. |
 | acceptButtonTextData     | `object`         | `{}`                  | (get/set)<br><br>`data-*` attributes of the accept button text. |
-| acceptButtonWarning      | `boolean`        | `false`               | (get/set)<br><br>Shows the accept button with warning style. The `warning` and `delete` types always apply it. |
+| acceptButtonSubmit       | `boolean`        | `false`               | (get/set)<br><br>Shows the accept button with submit style (`WUIButton` `submit`). Types other than `warning` and `delete` always apply it. |
+| acceptButtonDanger       | `boolean`        | `false`               | (get/set)<br><br>Shows the accept button with danger style (`danger`). The `warning` and `delete` types always apply it. |
+| acceptButtonOutlined     | `boolean`        | `false`               | (get/set)<br><br>Shows the accept button with outline style (`WUIButton` `outlined`). |
 | acceptButtonLockOnAccept | `boolean`        | `false`               | (get/set)<br><br>On accept, disables and locks the accept button with a loading icon and keeps the modal open. Closing is left to `onAccept`. |
 | onAccept                 | `function\|null` | `null`                | (get/set)<br><br>Function executed when the accept button is pressed. |
 | onCancel                 | `function\|null` | `null`                | (get/set)<br><br>Function executed when the cancel button is pressed. |
@@ -60,7 +62,7 @@ The constructor creates the modal (`div.wui-modal.message`) at the end of `<body
 | Method   | Return type | Description |
 | -------- | ----------- | ----------- |
 | init     | `void`      | `init()`<br><br>Initializes the object. |
-| open     | `void`      | `open(type[, options])`<br><br>Arguments:<br>**• type:** `string`, message type. Sets the icon and the button state: `info`, `invalid`, `offline`, `error`, `privacy`, `confirm`, `warning`, `delete`, `success`, `download` or `signout`.<br>**• options:** `object` *optional*, message options. Each option replaces the property of the same name for this opening only: `text`, `detail`, `iconClass`, `cancelButtonHidden`, `cancelButtonText`, `acceptButtonHidden`, `acceptButtonText`, `acceptButtonWarning`, `acceptButtonLockOnAccept` (alias `lockOnAccept`), `onAccept`, `onCancel` and `onClose`.<br><br>Opens the modal with the message. `detail` is added as a paragraph below `text`. |
+| open     | `void`      | `open(type[, options])`<br><br>Arguments:<br>**• type:** `string`, message type. Sets the icon and the button state: `info`, `invalid`, `offline`, `error`, `privacy`, `confirm`, `warning`, `delete`, `success`, `download` or `signout`.<br>**• options:** `object` *optional*, message options. Each option replaces the property of the same name for this opening only: `text`, `detail`, `iconClass`, `cancelButtonHidden`, `cancelButtonText`, `acceptButtonHidden`, `acceptButtonText`, `acceptButtonSubmit`, `acceptButtonDanger`, `acceptButtonOutlined`, `acceptButtonLockOnAccept` (alias `lockOnAccept`), `onAccept`, `onCancel` and `onClose`.<br><br>Opens the modal with the message. `detail` is added as a paragraph below `text`. |
 | close    | `void`      | `close()`<br><br>Closes the modal. |
 | isOpen   | `boolean`   | `isOpen()`<br><br>Returns whether the modal is open. |
 | getModal | `WUIModal`  | `getModal()`<br><br>Returns the view's `WUIModal` object. |

@@ -20,16 +20,16 @@ Data listing view with paging, search, modal filters, selection and add and remo
 
 | Class             | Version | Description |
 | ----------------- |:-------:| ----------- |
-| `WUIForm`         | `0.15`  | Main form (header and body) and filter form. Required. |
-| `WUIButton`       | `0.16`  | Paging, filter, add, remove, apply and clear buttons. Required. |
-| `WUISelectpicker` | `0.15`  | Header options menu and `wui-selectpicker` filters. Required. |
+| `WUIForm`         | `0.16`  | Main form (header and body) and filter form. Required. |
+| `WUIButton`       | `0.17`  | Paging, filter, add, remove, apply and clear buttons. Required. |
+| `WUISelectpicker` | `0.16`  | Header options menu and `wui-selectpicker` filters. Required. |
 | `WUIIcon`         | `0.14`  | Header icons. Required. |
-| `WUIList`         | `0.12`  | List presentation (`type` `list` or `dual`). |
-| `WUITable`        | `0.13`  | Table presentation (`type` `table` or `dual`). |
-| `WUIModal`        | `0.13`  | Filter modal (`filterable`). |
-| `WUIDatepicker`   | `0.14`  | `wui-datepicker` filters. |
-| `WUITimepicker`   | `0.13`  | `wui-timepicker` filters. |
-| `WUIColorpicker`  | `0.14`  | `wui-colorpicker` filters. |
+| `WUIList`         | `0.13`  | List presentation (`type` `list` or `dual`). |
+| `WUITable`        | `0.14`  | Table presentation (`type` `table` or `dual`). |
+| `WUIModal`        | `0.14`  | Filter modal (`filterable`). |
+| `WUIDatepicker`   | `0.15`  | `wui-datepicker` filters. |
+| `WUITimepicker`   | `0.14`  | `wui-timepicker` filters. |
+| `WUIColorpicker`  | `0.15`  | `wui-colorpicker` filters. |
 | `WUISwitch`       | `0.10`  | `wui-switch` filters. |
 
 ## Constructor
@@ -45,7 +45,7 @@ The constructor creates the view's HTML structure inside the `selector` element 
 | Property | Type     | Description |
 | -------- | -------- | ----------- |
 | version  | `string` | Class version. |
-| colors   | `object` | (get)<br><br>`WUIButton` `submit` and `warning` colors, read from the `--wui-button-submit-bgcolor-out` and `--wui-button-warning-bgcolor-out` CSS variables. |
+| colors   | `object` | (get)<br><br>`WUIButton` `submit` and `danger` colors, read from the `--wui-button-submit-bgcolor-out` and `--wui-button-danger-bgcolor-out` CSS variables. |
 
 ## Properties
 
@@ -68,10 +68,9 @@ The constructor creates the view's HTML structure inside the `selector` element 
 | modalTitle               | `string`             | `""`                   | (get/set)<br><br>Filter modal title. |
 | modalTitleData           | `object`             | `{}`                   | (get/set)<br><br>`data-*` attributes of the modal title (for example, `{ key: "filters.title" }` for `WUILanguage`). |
 | modalSelector            | `string`             | `"#{modalId}"`         | (get)<br><br>CSS selector of the filter modal. |
+| formFieldMode            | `string`             | `"stack"`              | (get/set)<br><br>Form field mode: `stack`, `inline` or `auto` (equivalent to `WUIForm`'s `fieldMode`). |
 | formFieldStyle           | `string`             | `"fill"`               | (get/set)<br><br>Form field style: `fill`, `roundfill`, `border`, `roundborder` or `line` (equivalent to `WUIForm`'s `fieldStyle`). |
-| formHeaderButtonStyle    | `string`             | `"none"`               | (get/set)<br><br>Form header button style: `none` or `join`. |
-| formBodyButtonStyle      | `string`             | `"none"`               | (get/set)<br><br>Form body button style: `none` or `join`. |
-| formFooterButtonStyle    | `string`             | `"none"`               | (get/set)<br><br>Form footer button style: `none` or `join`. |
+| formHeaderJoinButton     | `boolean`            | `false`                | (get/set)<br><br>Joins the header buttons. With `true`, the view passes `join: true` to the header `WUIButton` objects (previous, next, filter, add and remove), which are joined per group (`fieldset`); with no items, the add button is left unjoined. With `false`, all of them receive `join: false`. |
 | listColumns              | `array`              | `[]`                   | (get/set)<br><br>`WUIList` columns (`columns` property). |
 | listRowFormat            | `function\|null`     | `null`                 | (get/set)<br><br>Function that converts each item into a `WUIList` row (`item => ({ id, data, ... })`). |
 | listButtons              | `array`              | `[]`                   | (get/set)<br><br>`WUIList` row buttons (`buttons` property). With `removable`, a remove button is added. |
@@ -92,7 +91,7 @@ The constructor creates the view's HTML structure inside the `selector` element 
 | searchDelay              | `number`             | `300`                  | (get/set)<br><br>Wait in milliseconds between the last keystroke and the search. |
 | searchStaticMatch        | `function\|null`     | `null`                 | (get/set)<br><br>Match function for local data (`(item, key) => boolean`). If `null`, `key` is searched in the text and number values of each item. |
 | filterable               | `boolean`            | `false`                | (get/set)<br><br>Shows the filter button and creates the filter modal. |
-| filterInputs             | `array`              | `[]`                   | (get/set)<br><br>Filter form fields, in the `WUIForm` `bodyItems` format. Fields of type `wui-selectpicker`, `wui-datepicker`, `wui-timepicker`, `wui-colorpicker` and `wui-switch` create their component; `properties` is passed to its constructor. |
+| filterInputs             | `array`              | `[]`                   | (get/set)<br><br>Filter form fields, as a flat list of `WUIForm` items; each `legend` item starts a new `<fieldset>`. Fields of type `wui-selectpicker`, `wui-datepicker`, `wui-timepicker`, `wui-colorpicker` and `wui-switch` create their component; `properties` is passed to its constructor. |
 | applyButtonText          | `string`             | `""`                   | (get/set)<br><br>Filter modal apply button text. |
 | applyButtonTextData      | `object`             | `{}`                   | (get/set)<br><br>`data-*` attributes of the apply button text. |
 | clearButtonText          | `string`             | `""`                   | (get/set)<br><br>Filter modal clear button text. |
@@ -101,8 +100,9 @@ The constructor creates the view's HTML structure inside the `selector` element 
 | addButtonIconClass       | `string`             | `""`                   | (get/set)<br><br>CSS class of the add button icon. If empty, `wui-icon plus-line` is used. |
 | addButtonText            | `string`             | `""`                   | (get/set)<br><br>Add button text. |
 | addButtonTextData        | `object`             | `{}`                   | (get/set)<br><br>`data-*` attributes of the add button text. |
-| removable                | `boolean`            | `false`                | (get/set)<br><br>Shows the remove button (hidden below 768px wide) and adds a remove button to the list rows. |
+| removable                | `boolean`            | `false`                | (get/set)<br><br>Shows the remove button (hidden below 768px wide) and adds a remove button to the list rows, colored with `--wui-list-button-bgcolor-danger`. |
 | removeButtonIconClass    | `string`             | `""`                   | (get/set)<br><br>CSS class of the remove button icon. If empty, `wui-icon trash-line` is used (`trash-fill` in the list rows). |
+| removeButtonOutlined     | `boolean`            | `true`                 | (get/set)<br><br>Shows the header remove button with outline style (`WUIButton` `outlined`). |
 | menuSelectPageText       | `string`             | `""`                   | (get/set)<br><br>Text of the "select page" menu option. |
 | menuSelectPageTextData   | `object`             | `{}`                   | (get/set)<br><br>`data-*` attributes of the "select page" option. |
 | menuSelectAllText        | `string`             | `""`                   | (get/set)<br><br>Text of the "select all" menu option. |
@@ -134,7 +134,7 @@ The constructor creates the view's HTML structure inside the `selector` element 
 | load                    | `Promise<void>` | `load()`<br><br>Loads and shows the current page. With function `data`, it queries the data; if the page no longer exists, it loads the last one. |
 | print                   | `void`          | `print()`<br><br>Shows the loaded items and updates paging, selection, menu and the no-items message. |
 | search                  | `void`          | `search([key])`<br><br>Arguments:<br>**• key:** `string` *optional*, search text.<br><br>Searches from the first page. If the text does not change, it does nothing. |
-| refreshFilterComponents | `void`          | `refreshFilterComponents()`<br><br>Applies `lang` and `locale` to the filter components, after those properties change. |
+| refreshFilterComponents | `void`          | `refreshFilterComponents()`<br><br>Applies `lang` and `locale` to the filter components, after those properties change. The `wui-selectpicker` filters whose `properties.options` is set get those options again, keeping their value, except those with options that have no `text` (for example, translated with `textData`), which `setLang` already translates. |
 | goPage                  | `void`          | `goPage(page)`<br><br>Arguments:<br>**• page:** `number`, page from `0`.<br><br>Shows the given page. |
 | firstPage               | `void`          | `firstPage()`<br><br>Shows the first page. |
 | lastPage                | `void`          | `lastPage()`<br><br>Shows the last page. |
@@ -148,7 +148,23 @@ The constructor creates the view's HTML structure inside the `selector` element 
 
 ## CSS Variables
 
-The class defines no CSS variables of its own. Its appearance depends on the `WUIForm`, `WUIButton`, `WUIModal`, `WUIList` and `WUITable` variables.
+| Variable                                         | Description |
+| ------------------------------------------------ | ----------- |
+| `--wuiview-datalist-header-button-width`         | Width of the header buttons. |
+| `--wuiview-datalist-header-button-height`        | Height of the header buttons. With `WUIPluginBodyTheme` it takes the value of `--wui-form-input-height`, to match the search field height. |
+| `--wuiview-datalist-mobile-header-button-width`  | Width of the header buttons on mobile (screen width below 768px). |
+| `--wuiview-datalist-mobile-header-button-height` | Height of the header buttons on mobile (screen width below 768px); also the height of the search field. |
+
+```css
+:root {
+	--wuiview-datalist-header-button-width: 40px;
+	--wuiview-datalist-header-button-height: 32px;
+	--wuiview-datalist-mobile-header-button-width: 34px;
+	--wuiview-datalist-mobile-header-button-height: 34px;
+}
+```
+
+The rest of its appearance depends on the `WUIForm`, `WUIButton`, `WUIModal`, `WUIList` and `WUITable` variables. With `WUIPluginBodyTheme`, the plugin assigns these variables, so loading `wuiview-datalist-0.1.root.css` is not required. On mobile, the header search field takes the header button height (`--wuiview-datalist-mobile-header-button-height`), without affecting other form fields. The search field has the `stack` class, so it keeps its shape with any `formFieldMode` (it does not take the label column of row fields). With no items, the add button is no longer joined (`join` set to `false`) and is shown centered, outside the header group.
 
 ## Implementation
 

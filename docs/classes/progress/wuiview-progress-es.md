@@ -20,9 +20,9 @@ Vista modal de progreso con etiqueta, barra `<progress>` (determinada o indeterm
 
 | Clase       | Versión | Descripción |
 | ----------- |:-------:| ----------- |
-| `WUIModal`  | `0.13`  | Modal en modo `message` que contiene la vista. Requerida. |
-| `WUIButton` | `0.16`  | Botón cancelar. Requerida. |
-| `WUIForm`   | `0.15`  | Estilos del formulario que contiene la barra de progreso (solo CSS; la vista no instancia `WUIForm`). Requerida. |
+| `WUIModal`  | `0.14`  | Modal en modo `message` que contiene la vista. Requerida. |
+| `WUIButton` | `0.17`  | Botón cancelar. Requerida. |
+| `WUIForm`   | `0.16`  | Estilos del formulario que contiene la barra de progreso (solo CSS; la vista no instancia `WUIForm`). Requerida. |
 
 ## Constructor
 
@@ -43,9 +43,6 @@ El constructor crea el modal (`div.wui-modal.message`) al final de `<body>` cuan
 | modalPriority         | `boolean`        | `true`                | (get/set)<br><br>Prioridad del modal sobre otros modales abiertos. |
 | modalSelector         | `string`         | `"#{modalId}"`        | (get)<br><br>Selector CSS del modal. |
 | formFieldStyle        | `string`         | `"fill"`              | (get/set)<br><br>Estilo de campos del formulario: `fill`, `roundfill`, `border`, `roundborder` o `line` (equivalente a `fieldStyle` de `WUIForm`). |
-| formHeaderButtonStyle | `string`         | `"none"`              | (get/set)<br><br>Estilo de botones de la cabecera del formulario: `none` o `join`. |
-| formBodyButtonStyle   | `string`         | `"none"`              | (get/set)<br><br>Estilo de botones del cuerpo del formulario: `none` o `join`. |
-| formFooterButtonStyle | `string`         | `"none"`              | (get/set)<br><br>Estilo de botones del pie del formulario: `none` o `join`. |
 | labelText             | `string`         | `""`                  | (get/set)<br><br>Texto de la etiqueta sobre la barra de progreso. |
 | labelTextData         | `object`         | `{}`                  | (get/set)<br><br>Atributos `data-*` de la etiqueta (por ejemplo, `{ key: "progress.label" }` para `WUILanguage`). |
 | cancelButtonHidden    | `boolean`        | `false`               | (get/set)<br><br>Oculta el botón cancelar. |

@@ -9,7 +9,7 @@
 | **Library name**     | `wuijs-views-lib` |
 | **Library version**  | `0.1.0` ([Change Log](https://github.com/wui-js/wuijs-views-lib/blob/main/docs/CHANGELOG-en.md)) |
 | **NPM package**      | `@wui-js/views` |
-| **Document version** | `0.1.0.20261016.0` |
+| **Document version** | `0.1.0.20261107.0` |
 | **License**          | `Apache License 2.0` |
 | **Author**           | `Sergio E. Belmar V. <wuijs.project@gmail.com>` |
 | **Repository**       | [https://github.com/wui-js/wuijs-views-lib](https://github.com/wui-js/wuijs-views-lib) |
@@ -38,16 +38,22 @@ WUI/JS Views Lib is an open-source JavaScript/CSS library that provides composit
 
 ### About the WUI/JS Project
 
-WUI/JS Views Lib is part of the WUI/JS project, which currently consists of 5 repositories:
+WUI/JS Views Lib is part of the WUI/JS project, which currently consists of 8 repositories:
 
 -	[https://github.com/wui-js/wuijs-main-lib](https://github.com/wui-js/wuijs-main-lib)<br>
 	UI Main library.<br><br>
--	[https://github.com/wui-js/wuijs-environment-lib](https://github.com/wui-js/wuijs-environment-lib)<br>
-	UI Bridge library between a web environments and native web rendering engines.<br><br>
+-	[https://github.com/wui-js/wuijs-data-lib](https://github.com/wui-js/wuijs-data-lib)<br>
+	Reference Data library.<br><br>
 -	[https://github.com/wui-js/wuijs-plugins-lib](https://github.com/wui-js/wuijs-plugins-lib)<br>
 	UI Plugins library.<br><br>
 -	[https://github.com/wui-js/wuijs-views-lib](https://github.com/wui-js/wuijs-views-lib)<br>
 	UI Views library.<br><br>
+-	[https://github.com/wui-js/wuijs-environment-lib](https://github.com/wui-js/wuijs-environment-lib)<br>
+	UI Bridge library between web environments and native web rendering engines.<br><br>
+-	[https://github.com/wui-js/wuijs-lab-lib](https://github.com/wui-js/wuijs-lab-lib)<br>
+	Experimental UI components library.<br><br>
+-	[https://github.com/wui-js/wuijs-specs-lib](https://github.com/wui-js/wuijs-specs-lib)<br>
+	Universal code and content Specifications library.<br><br>
 -	[https://github.com/wui-js/wuijs-demos](https://github.com/wui-js/wuijs-demos)<br>
 	Repository with demos and usage examples for the project libraries.<br><br>
 

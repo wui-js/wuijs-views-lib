@@ -16,9 +16,6 @@ class WUIViewProgress {
 		modalOverlay: true,
 		modalPriority: true,
 		formFieldStyle: "fill",
-		formHeaderButtonStyle: "none",
-		formBodyButtonStyle: "none",
-		formFooterButtonStyle: "none",
 		labelText: "",
 		labelTextData: {},
 		cancelButtonHidden: false,
@@ -109,18 +106,6 @@ class WUIViewProgress {
 		return this.#properties.formFieldStyle;
 	}
 
-	get formHeaderButtonStyle() {
-		return this.#properties.formHeaderButtonStyle;
-	}
-
-	get formBodyButtonStyle() {
-		return this.#properties.formBodyButtonStyle;
-	}
-
-	get formFooterButtonStyle() {
-		return this.#properties.formFooterButtonStyle;
-	}
-
 	get labelText() {
 		return this.#properties.labelText;
 	}
@@ -202,24 +187,6 @@ class WUIViewProgress {
 		}
 	}
 
-	set formHeaderButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formHeaderButtonStyle = value.toLowerCase();
-		}
-	}
-
-	set formBodyButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formBodyButtonStyle = value.toLowerCase();
-		}
-	}
-
-	set formFooterButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formFooterButtonStyle = value.toLowerCase();
-		}
-	}
-
 	set labelText(value) {
 		if (typeof (value) === "string") {
 			this.#properties.labelText = value;
@@ -251,25 +218,25 @@ class WUIViewProgress {
 	}
 
 	set onOpen(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onOpen = value;
 		}
 	}
 
 	set onCancel(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onCancel = value;
 		}
 	}
 
 	set onReady(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onReady = value;
 		}
 	}
 
 	set onClose(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onClose = value;
 		}
 	}
@@ -386,19 +353,9 @@ class WUIViewProgress {
 
 	init() {
 		const htmlElement = this.#htmlElement;
-		const { form, formBody, label } = this.#htmlElements;
+		const { form, label } = this.#htmlElements;
 		if (htmlElement instanceof HTMLDivElement) {
-			const buttonStyles = [
-				[form.querySelector(":scope > .header"), this.formHeaderButtonStyle],
-				[formBody, this.formBodyButtonStyle],
-				[form.querySelector(":scope > .footer"), this.formFooterButtonStyle]
-			];
 			form.classList.add(...WUIViewProgress.#fieldStyles[this.formFieldStyle]);
-			buttonStyles.forEach(([element, buttonStyle]) => {
-				if (element instanceof HTMLElement && buttonStyle === "join") {
-					element.classList.add("join-buttons");
-				}
-			});
 			form.addEventListener("submit", event => { event.preventDefault(); });
 			label.classList.add("wui-language");
 			Object.assign(label.dataset, this.labelTextData);

@@ -5,3 +5,10 @@
 @author Sergio E. Belmar V. (wuijs.project@gmail.com)
 @copyright Sergio E. Belmar V. (wuijs.project@gmail.com)
 */
+
+:root {
+	--wuiview-datalist-header-button-width: 40px;
+	--wuiview-datalist-header-button-height: 32px;
+	--wuiview-datalist-mobile-header-button-width: 34px;
+	--wuiview-datalist-mobile-header-button-height: 34px;
+}

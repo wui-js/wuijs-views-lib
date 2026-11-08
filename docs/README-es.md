@@ -9,7 +9,7 @@
 | **Nombre librería**   | `wuijs-views-lib` |
 | **Versión librería**  | `0.1.0` ([Registro de Cambios](https://github.com/wui-js/wuijs-views-lib/blob/main/docs/CHANGELOG-es.md)) |
 | **Paquete npm**       | `@wui-js/views` |
-| **Versión documento** | `0.1.0.20261016.0` |
+| **Versión documento** | `0.1.0.20261107.0` |
 | **Licencia**          | `Licencia Apache 2.0` |
 | **Autor**             | `Sergio E. Belmar V. <wuijs.project@gmail.com>` |
 | **Repositorio**       | [https://github.com/wui-js/wuijs-views-lib](https://github.com/wui-js/wuijs-views-lib) |
@@ -38,16 +38,22 @@ WUI/JS Views Lib es una librería JavaScript/CSS de código abierto que proporci
 
 ### Acerca del Proyecto WUI/JS
 
-WUI/JS Views Lib es parte del proyecto WUI/JS, que consta actualmente de 5 repositorios:
+WUI/JS Views Lib es parte del proyecto WUI/JS, que consta actualmente de 8 repositorios:
 
 -	[https://github.com/wui-js/wuijs-main-lib](https://github.com/wui-js/wuijs-main-lib)<br>
 	Librería Principal UI.<br><br>
--	[https://github.com/wui-js/wuijs-environment-lib](https://github.com/wui-js/wuijs-environment-lib)<br>
-	Librería Puente UI entre entornos web y motores de renderizado web nativos.<br><br>
+-	[https://github.com/wui-js/wuijs-data-lib](https://github.com/wui-js/wuijs-data-lib)<br>
+	Librería de Datos de referencia.<br><br>
 -	[https://github.com/wui-js/wuijs-plugins-lib](https://github.com/wui-js/wuijs-plugins-lib)<br>
 	Librería de Complementos UI.<br><br>
 -	[https://github.com/wui-js/wuijs-views-lib](https://github.com/wui-js/wuijs-views-lib)<br>
 	Librería de Vistas UI.<br><br>
+-	[https://github.com/wui-js/wuijs-environment-lib](https://github.com/wui-js/wuijs-environment-lib)<br>
+	Librería Puente UI entre entornos web y motores de renderizado web nativos.<br><br>
+-	[https://github.com/wui-js/wuijs-lab-lib](https://github.com/wui-js/wuijs-lab-lib)<br>
+	Librería de componentes UI experimentales.<br><br>
+-	[https://github.com/wui-js/wuijs-specs-lib](https://github.com/wui-js/wuijs-specs-lib)<br>
+	Librería de Especificaciones universales de código y contenido.<br><br>
 -	[https://github.com/wui-js/wuijs-demos](https://github.com/wui-js/wuijs-demos)<br>
 	Repositorio con demos y ejemplos de uso de las librerías del proyecto.<br><br>
 

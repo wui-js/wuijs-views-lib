@@ -20,16 +20,16 @@ Vista de listado de datos con paginación, búsqueda, filtros en modal, selecci�
 
 | Clase             | Versión | Descripción |
 | ----------------- |:-------:| ----------- |
-| `WUIForm`         | `0.15`  | Formulario principal (cabecera y cuerpo) y formulario de filtros. Requerida. |
-| `WUIButton`       | `0.16`  | Botones de paginación, filtro, agregar, eliminar, aplicar y limpiar. Requerida. |
-| `WUISelectpicker` | `0.15`  | Menú de opciones de la cabecera y filtros de tipo `wui-selectpicker`. Requerida. |
+| `WUIForm`         | `0.16`  | Formulario principal (cabecera y cuerpo) y formulario de filtros. Requerida. |
+| `WUIButton`       | `0.17`  | Botones de paginación, filtro, agregar, eliminar, aplicar y limpiar. Requerida. |
+| `WUISelectpicker` | `0.16`  | Menú de opciones de la cabecera y filtros de tipo `wui-selectpicker`. Requerida. |
 | `WUIIcon`         | `0.14`  | Íconos de la cabecera. Requerida. |
-| `WUIList`         | `0.12`  | Presentación en lista (`type` `list` o `dual`). |
-| `WUITable`        | `0.13`  | Presentación en tabla (`type` `table` o `dual`). |
-| `WUIModal`        | `0.13`  | Modal de filtros (`filterable`). |
-| `WUIDatepicker`   | `0.14`  | Filtros de tipo `wui-datepicker`. |
-| `WUITimepicker`   | `0.13`  | Filtros de tipo `wui-timepicker`. |
-| `WUIColorpicker`  | `0.14`  | Filtros de tipo `wui-colorpicker`. |
+| `WUIList`         | `0.13`  | Presentación en lista (`type` `list` o `dual`). |
+| `WUITable`        | `0.14`  | Presentación en tabla (`type` `table` o `dual`). |
+| `WUIModal`        | `0.14`  | Modal de filtros (`filterable`). |
+| `WUIDatepicker`   | `0.15`  | Filtros de tipo `wui-datepicker`. |
+| `WUITimepicker`   | `0.14`  | Filtros de tipo `wui-timepicker`. |
+| `WUIColorpicker`  | `0.15`  | Filtros de tipo `wui-colorpicker`. |
 | `WUISwitch`       | `0.10`  | Filtros de tipo `wui-switch`. |
 
 ## Constructor
@@ -45,7 +45,7 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 | Propiedad | Tipo     | Descripción |
 | --------- | -------- | ----------- |
 | version   | `string` | Versión de la clase. |
-| colors    | `object` | (get)<br><br>Colores `submit` y `warning` de `WUIButton`, leídos de las variables CSS `--wui-button-submit-bgcolor-out` y `--wui-button-warning-bgcolor-out`. |
+| colors    | `object` | (get)<br><br>Colores `submit` y `danger` de `WUIButton`, leídos de las variables CSS `--wui-button-submit-bgcolor-out` y `--wui-button-danger-bgcolor-out`. |
 
 ## Propiedades
 
@@ -68,10 +68,9 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 | modalTitle               | `string`             | `""`                   | (get/set)<br><br>Título del modal de filtros. |
 | modalTitleData           | `object`             | `{}`                   | (get/set)<br><br>Atributos `data-*` del título del modal (por ejemplo, `{ key: "filters.title" }` para `WUILanguage`). |
 | modalSelector            | `string`             | `"#{modalId}"`         | (get)<br><br>Selector CSS del modal de filtros. |
+| formFieldMode            | `string`             | `"stack"`              | (get/set)<br><br>Modo de campos de los formularios: `stack`, `inline` o `auto` (equivalente a `fieldMode` de `WUIForm`). |
 | formFieldStyle           | `string`             | `"fill"`               | (get/set)<br><br>Estilo de campos de los formularios: `fill`, `roundfill`, `border`, `roundborder` o `line` (equivalente a `fieldStyle` de `WUIForm`). |
-| formHeaderButtonStyle    | `string`             | `"none"`               | (get/set)<br><br>Estilo de botones de la cabecera de los formularios: `none` o `join`. |
-| formBodyButtonStyle      | `string`             | `"none"`               | (get/set)<br><br>Estilo de botones del cuerpo de los formularios: `none` o `join`. |
-| formFooterButtonStyle    | `string`             | `"none"`               | (get/set)<br><br>Estilo de botones del pie de los formularios: `none` o `join`. |
+| formHeaderJoinButton     | `boolean`            | `false`                | (get/set)<br><br>Une los botones de la cabecera. Con `true`, la vista pasa `join: true` a los `WUIButton` de la cabecera (anterior, siguiente, filtrar, agregar y eliminar), que se unen por grupo (`fieldset`); sin elementos, el botón agregar queda sin unir. Con `false`, todos reciben `join: false`. |
 | listColumns              | `array`              | `[]`                   | (get/set)<br><br>Columnas de `WUIList` (propiedad `columns`). |
 | listRowFormat            | `function\|null`     | `null`                 | (get/set)<br><br>Función que convierte cada elemento en una fila de `WUIList` (`item => ({ id, data, ... })`). |
 | listButtons              | `array`              | `[]`                   | (get/set)<br><br>Botones de fila de `WUIList` (propiedad `buttons`). Con `removable`, se agrega un botón de eliminar. |
@@ -92,7 +91,7 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 | searchDelay              | `number`             | `300`                  | (get/set)<br><br>Espera en milisegundos entre la última tecla y la búsqueda. |
 | searchStaticMatch        | `function\|null`     | `null`                 | (get/set)<br><br>Función de coincidencia para datos locales (`(item, key) => boolean`). Si es `null`, se busca `key` en los valores de texto y número de cada elemento. |
 | filterable               | `boolean`            | `false`                | (get/set)<br><br>Muestra el botón de filtro y crea el modal de filtros. |
-| filterInputs             | `array`              | `[]`                   | (get/set)<br><br>Campos del formulario de filtros, con el formato de `bodyItems` de `WUIForm`. Los campos de tipo `wui-selectpicker`, `wui-datepicker`, `wui-timepicker`, `wui-colorpicker` y `wui-switch` crean su componente; `properties` se pasa a su constructor. |
+| filterInputs             | `array`              | `[]`                   | (get/set)<br><br>Campos del formulario de filtros, como lista plana de ítems de `WUIForm`; cada ítem `legend` abre un `<fieldset>` nuevo. Los campos de tipo `wui-selectpicker`, `wui-datepicker`, `wui-timepicker`, `wui-colorpicker` y `wui-switch` crean su componente; `properties` se pasa a su constructor. |
 | applyButtonText          | `string`             | `""`                   | (get/set)<br><br>Texto del botón aplicar del modal de filtros. |
 | applyButtonTextData      | `object`             | `{}`                   | (get/set)<br><br>Atributos `data-*` del texto del botón aplicar. |
 | clearButtonText          | `string`             | `""`                   | (get/set)<br><br>Texto del botón limpiar del modal de filtros. |
@@ -101,8 +100,9 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 | addButtonIconClass       | `string`             | `""`                   | (get/set)<br><br>Clase CSS del ícono del botón agregar. Si está vacía, se usa `wui-icon plus-line`. |
 | addButtonText            | `string`             | `""`                   | (get/set)<br><br>Texto del botón agregar. |
 | addButtonTextData        | `object`             | `{}`                   | (get/set)<br><br>Atributos `data-*` del texto del botón agregar. |
-| removable                | `boolean`            | `false`                | (get/set)<br><br>Muestra el botón eliminar (oculto bajo 768px de ancho) y agrega un botón de eliminar a las filas de la lista. |
+| removable                | `boolean`            | `false`                | (get/set)<br><br>Muestra el botón eliminar (oculto bajo 768px de ancho) y agrega un botón de eliminar a las filas de la lista, con el color `--wui-list-button-bgcolor-danger`. |
 | removeButtonIconClass    | `string`             | `""`                   | (get/set)<br><br>Clase CSS del ícono del botón eliminar. Si está vacía, se usa `wui-icon trash-line` (`trash-fill` en las filas de la lista). |
+| removeButtonOutlined     | `boolean`            | `true`                 | (get/set)<br><br>Muestra el botón eliminar de la cabecera con estilo de contorno (`outlined` de `WUIButton`). |
 | menuSelectPageText       | `string`             | `""`                   | (get/set)<br><br>Texto de la opción de menú "seleccionar página". |
 | menuSelectPageTextData   | `object`             | `{}`                   | (get/set)<br><br>Atributos `data-*` de la opción "seleccionar página". |
 | menuSelectAllText        | `string`             | `""`                   | (get/set)<br><br>Texto de la opción de menú "seleccionar todo". |
@@ -134,7 +134,7 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 | load                    | `Promise<void>` | `load()`<br><br>Carga y muestra la página actual. Con `data` de tipo función, consulta los datos; si la página ya no existe, carga la última. |
 | print                   | `void`          | `print()`<br><br>Muestra los elementos cargados y actualiza paginación, selección, menú y mensaje sin elementos. |
 | search                  | `void`          | `search([key])`<br><br>Parámetros:<br>**• key:** `string` *opcional*, texto de búsqueda.<br><br>Busca desde la primera página. Si el texto no cambia, no hace nada. |
-| refreshFilterComponents | `void`          | `refreshFilterComponents()`<br><br>Aplica `lang` y `locale` a los componentes de los filtros, después de cambiar esas propiedades. |
+| refreshFilterComponents | `void`          | `refreshFilterComponents()`<br><br>Aplica `lang` y `locale` a los componentes de los filtros, después de cambiar esas propiedades. Los filtros `wui-selectpicker` con `properties.options` reciben de nuevo esas opciones, conservando su valor, salvo los que tienen opciones sin `text` (por ejemplo, traducidas con `textData`), que `setLang` ya traduce. |
 | goPage                  | `void`          | `goPage(page)`<br><br>Parámetros:<br>**• page:** `number`, página desde `0`.<br><br>Muestra la página indicada. |
 | firstPage               | `void`          | `firstPage()`<br><br>Muestra la primera página. |
 | lastPage                | `void`          | `lastPage()`<br><br>Muestra la última página. |
@@ -148,7 +148,23 @@ El constructor crea la estructura HTML de la vista dentro del elemento `selector
 
 ## Variables CSS
 
-La clase no define variables CSS propias. Su apariencia depende de las variables de `WUIForm`, `WUIButton`, `WUIModal`, `WUIList` y `WUITable`.
+| Variable                                         | Descripción |
+| ------------------------------------------------ | ----------- |
+| `--wuiview-datalist-header-button-width`         | Ancho de los botones de la cabecera. |
+| `--wuiview-datalist-header-button-height`        | Alto de los botones de la cabecera. Con `WUIPluginBodyTheme` toma el valor de `--wui-form-input-height`, para igualar el alto del campo de búsqueda. |
+| `--wuiview-datalist-mobile-header-button-width`  | Ancho de los botones de la cabecera en móvil (ancho de pantalla menor a 768px). |
+| `--wuiview-datalist-mobile-header-button-height` | Alto de los botones de la cabecera en móvil (ancho de pantalla menor a 768px); también es el alto del campo de búsqueda. |
+
+```css
+:root {
+	--wuiview-datalist-header-button-width: 40px;
+	--wuiview-datalist-header-button-height: 32px;
+	--wuiview-datalist-mobile-header-button-width: 34px;
+	--wuiview-datalist-mobile-header-button-height: 34px;
+}
+```
+
+El resto de su apariencia depende de las variables de `WUIForm`, `WUIButton`, `WUIModal`, `WUIList` y `WUITable`. Con `WUIPluginBodyTheme`, el plugin asigna estas variables, por lo que no es necesario cargar `wuiview-datalist-0.1.root.css`. En móvil, el campo de búsqueda de la cabecera toma el alto de los botones de la cabecera (`--wuiview-datalist-mobile-header-button-height`), sin afectar a los demás campos de formulario. El campo de búsqueda tiene la clase `stack`, por lo que conserva su forma con cualquier `formFieldMode` (no toma la columna de etiqueta de los campos en fila). Sin elementos, el botón agregar deja de estar unido (`join` en `false`) y se muestra centrado, fuera del grupo de la cabecera.
 
 ## Implementación
 

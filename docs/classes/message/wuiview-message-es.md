@@ -20,8 +20,8 @@ Vista de mensajes modales (información, confirmación, advertencia, error, etc.
 
 | Clase       | Versión | Descripción |
 | ----------- |:-------:| ----------- |
-| `WUIModal`  | `0.13`  | Modal en modo `message` que contiene la vista. Requerida. |
-| `WUIButton` | `0.16`  | Botones de cancelar y aceptar. Requerida. |
+| `WUIModal`  | `0.14`  | Modal en modo `message` que contiene la vista. Requerida. |
+| `WUIButton` | `0.17`  | Botones de cancelar y aceptar. Requerida. |
 | `WUIIcon`   | `0.14`  | Íconos del mensaje y del botón aceptar. Requerida. |
 | `WUIFade`   | `0.7`   | Animación del ícono de carga del botón aceptar (`acceptButtonLockOnAccept`). Requerida. |
 
@@ -49,7 +49,9 @@ El constructor crea el modal (`div.wui-modal.message`) al final de `<body>` cuan
 | acceptButtonHidden       | `boolean`        | `false`               | (get/set)<br><br>Oculta el botón aceptar. |
 | acceptButtonText         | `string`         | `""`                  | (get/set)<br><br>Texto del botón aceptar. |
 | acceptButtonTextData     | `object`         | `{}`                  | (get/set)<br><br>Atributos `data-*` del texto del botón aceptar. |
-| acceptButtonWarning      | `boolean`        | `false`               | (get/set)<br><br>Muestra el botón aceptar con estilo de advertencia. Los tipos `warning` y `delete` lo aplican siempre. |
+| acceptButtonSubmit       | `boolean`        | `false`               | (get/set)<br><br>Muestra el botón aceptar con estilo de envío (`submit` de `WUIButton`). Los tipos distintos de `warning` y `delete` lo aplican siempre. |
+| acceptButtonDanger       | `boolean`        | `false`               | (get/set)<br><br>Muestra el botón aceptar con estilo de peligro (`danger`). Los tipos `warning` y `delete` lo aplican siempre. |
+| acceptButtonOutlined     | `boolean`        | `false`               | (get/set)<br><br>Muestra el botón aceptar con estilo de contorno (`outlined` de `WUIButton`). |
 | acceptButtonLockOnAccept | `boolean`        | `false`               | (get/set)<br><br>Al aceptar, deshabilita y bloquea el botón aceptar con un ícono de carga y deja el modal abierto. El cierre queda a cargo de `onAccept`. |
 | onAccept                 | `function\|null` | `null`                | (get/set)<br><br>Función que se ejecuta al presionar el botón aceptar. |
 | onCancel                 | `function\|null` | `null`                | (get/set)<br><br>Función que se ejecuta al presionar el botón cancelar. |
@@ -60,7 +62,7 @@ El constructor crea el modal (`div.wui-modal.message`) al final de `<body>` cuan
 | Método   | Tipo retorno | Descripción |
 | -------- | ------------ | ----------- |
 | init     | `void`       | `init()`<br><br>Inicializa el objeto. |
-| open     | `void`       | `open(type[, options])`<br><br>Parámetros:<br>**• type:** `string`, tipo de mensaje. Define el ícono y el estado de los botones: `info`, `invalid`, `offline`, `error`, `privacy`, `confirm`, `warning`, `delete`, `success`, `download` o `signout`.<br>**• options:** `object` *opcional*, opciones del mensaje. Cada opción reemplaza a la propiedad homónima solo en esta apertura: `text`, `detail`, `iconClass`, `cancelButtonHidden`, `cancelButtonText`, `acceptButtonHidden`, `acceptButtonText`, `acceptButtonWarning`, `acceptButtonLockOnAccept` (alias `lockOnAccept`), `onAccept`, `onCancel` y `onClose`.<br><br>Abre el modal con el mensaje. `detail` se agrega como un párrafo bajo `text`. |
+| open     | `void`       | `open(type[, options])`<br><br>Parámetros:<br>**• type:** `string`, tipo de mensaje. Define el ícono y el estado de los botones: `info`, `invalid`, `offline`, `error`, `privacy`, `confirm`, `warning`, `delete`, `success`, `download` o `signout`.<br>**• options:** `object` *opcional*, opciones del mensaje. Cada opción reemplaza a la propiedad homónima solo en esta apertura: `text`, `detail`, `iconClass`, `cancelButtonHidden`, `cancelButtonText`, `acceptButtonHidden`, `acceptButtonText`, `acceptButtonSubmit`, `acceptButtonDanger`, `acceptButtonOutlined`, `acceptButtonLockOnAccept` (alias `lockOnAccept`), `onAccept`, `onCancel` y `onClose`.<br><br>Abre el modal con el mensaje. `detail` se agrega como un párrafo bajo `text`. |
 | close    | `void`       | `close()`<br><br>Cierra el modal. |
 | isOpen   | `boolean`    | `isOpen()`<br><br>Retorna si el modal está abierto. |
 | getModal | `WUIModal`   | `getModal()`<br><br>Retorna el objeto `WUIModal` de la vista. |

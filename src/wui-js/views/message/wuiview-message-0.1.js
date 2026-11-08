@@ -21,7 +21,9 @@ class WUIViewMessage {
 		acceptButtonHidden: false,
 		acceptButtonText: "",
 		acceptButtonTextData: {},
-		acceptButtonWarning: false,
+		acceptButtonSubmit: false,
+		acceptButtonDanger: false,
+		acceptButtonOutlined: false,
 		acceptButtonLockOnAccept: false,
 		onAccept: null,
 		onCancel: null,
@@ -41,7 +43,8 @@ class WUIViewMessage {
 		signout: "logout-line"
 	};
 	static #cancelButtonHiddenTypes = /^(offline|invalid|error|success)$/;
-	static #acceptButtonWarningTypes = /^(warning|delete)$/;
+	static #acceptButtonSubmitTypes = /^(?!(?:warning|delete)$).*$/;
+	static #acceptButtonDangerTypes = /^(warning|delete)$/;
 	static #autoId = 1;
 
 	#properties = {};
@@ -130,8 +133,16 @@ class WUIViewMessage {
 		return this.#properties.acceptButtonTextData;
 	}
 
-	get acceptButtonWarning() {
-		return this.#properties.acceptButtonWarning;
+	get acceptButtonSubmit() {
+		return this.#properties.acceptButtonSubmit;
+	}
+
+	get acceptButtonDanger() {
+		return this.#properties.acceptButtonDanger;
+	}
+
+	get acceptButtonOutlined() {
+		return this.#properties.acceptButtonOutlined;
 	}
 
 	get acceptButtonLockOnAccept() {
@@ -216,9 +227,21 @@ class WUIViewMessage {
 		}
 	}
 
-	set acceptButtonWarning(value) {
+	set acceptButtonSubmit(value) {
 		if (typeof (value) === "boolean") {
-			this.#properties.acceptButtonWarning = value;
+			this.#properties.acceptButtonSubmit = value;
+		}
+	}
+
+	set acceptButtonDanger(value) {
+		if (typeof (value) === "boolean") {
+			this.#properties.acceptButtonDanger = value;
+		}
+	}
+
+	set acceptButtonOutlined(value) {
+		if (typeof (value) === "boolean") {
+			this.#properties.acceptButtonOutlined = value;
 		}
 	}
 
@@ -229,19 +252,19 @@ class WUIViewMessage {
 	}
 
 	set onAccept(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onAccept = value;
 		}
 	}
 
 	set onCancel(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onCancel = value;
 		}
 	}
 
 	set onClose(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onClose = value;
 		}
 	}
@@ -405,7 +428,9 @@ class WUIViewMessage {
 		const acceptButtonHidden = typeof (options.acceptButtonHidden) === "boolean" ? options.acceptButtonHidden : this.acceptButtonHidden;
 		const acceptButtonInitText = acceptButton.getText().innerHTML;
 		const acceptButtonText = typeof (options.acceptButtonText) === "string" ? options.acceptButtonText : acceptButtonInitText;
-		const acceptButtonWarning = typeof (options.acceptButtonWarning) === "boolean" ? options.acceptButtonWarning : (this.acceptButtonWarning || WUIViewMessage.#acceptButtonWarningTypes.test(type));
+		const acceptButtonSubmit = typeof (options.acceptButtonSubmit) === "boolean" ? options.acceptButtonSubmit : (this.acceptButtonSubmit || WUIViewMessage.#acceptButtonSubmitTypes.test(type));
+		const acceptButtonDanger = typeof (options.acceptButtonDanger) === "boolean" ? options.acceptButtonDanger : (this.acceptButtonDanger || WUIViewMessage.#acceptButtonDangerTypes.test(type));
+		const acceptButtonOutlined = typeof (options.acceptButtonOutlined) === "boolean" ? options.acceptButtonOutlined : this.acceptButtonOutlined;
 		const acceptButtonLockOnAccept = typeof (options.acceptButtonLockOnAccept) === "boolean" ? options.acceptButtonLockOnAccept : (typeof (options.lockOnAccept) === "boolean" ? options.lockOnAccept : this.acceptButtonLockOnAccept);
 		this.#current = {
 			acceptButtonLockOnAccept,
@@ -419,7 +444,9 @@ class WUIViewMessage {
 		cancelButton.getElement().style.display = cancelButtonHidden ? "none" : "flex";
 		acceptButton.getElement().innerHTML = acceptButtonText;
 		acceptButton.getElement().style.display = acceptButtonHidden ? "none" : "flex";
-		acceptButton.getElement().classList.toggle("warning", acceptButtonWarning);
+		acceptButton.getElement().classList.toggle("submit", acceptButtonSubmit);
+		acceptButton.getElement().classList.toggle("danger", acceptButtonDanger);
+		acceptButton.getElement().classList.toggle("outlined", acceptButtonOutlined);
 		acceptButton.enabled = true;
 		acceptButton.locked = false;
 		acceptButton.getIcon().style.display = "none";

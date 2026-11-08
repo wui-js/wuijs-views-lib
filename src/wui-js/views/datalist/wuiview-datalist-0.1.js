@@ -26,10 +26,9 @@ class WUIViewDatalist {
 		modalPriority: true,
 		modalTitle: "",
 		modalTitleData: {},
+		formFieldMode: "stack",
 		formFieldStyle: "fill",
-		formHeaderButtonStyle: "none",
-		formBodyButtonStyle: "none",
-		formFooterButtonStyle: "none",
+		formHeaderJoinButton: false,
 		listColumns: [],
 		listRowFormat: null,
 		listButtons: [],
@@ -57,6 +56,7 @@ class WUIViewDatalist {
 		addButtonTextData: {},
 		removable: false,
 		removeButtonIconClass: "",
+		removeButtonOutlined: true,
 		menuSelectPageText: "",
 		menuSelectPageTextData: {},
 		menuSelectAllText: "",
@@ -81,7 +81,7 @@ class WUIViewDatalist {
 		const style = getComputedStyle(document.body);
 		return {
 			submit: style.getPropertyValue("--wui-button-submit-bgcolor-out").trim(),
-			warning: style.getPropertyValue("--wui-button-warning-bgcolor-out").trim()
+			danger: style.getPropertyValue("--wui-button-danger-bgcolor-out").trim()
 		};
 	}
 
@@ -246,20 +246,16 @@ class WUIViewDatalist {
 		return this.#properties.modalSelector;
 	}
 
+	get formFieldMode() {
+		return this.#properties.formFieldMode;
+	}
+
 	get formFieldStyle() {
 		return this.#properties.formFieldStyle;
 	}
 
-	get formHeaderButtonStyle() {
-		return this.#properties.formHeaderButtonStyle;
-	}
-
-	get formBodyButtonStyle() {
-		return this.#properties.formBodyButtonStyle;
-	}
-
-	get formFooterButtonStyle() {
-		return this.#properties.formFooterButtonStyle;
+	get formHeaderJoinButton() {
+		return this.#properties.formHeaderJoinButton;
 	}
 
 	get listColumns() {
@@ -386,6 +382,10 @@ class WUIViewDatalist {
 		return this.#properties.removeButtonIconClass;
 	}
 
+	get removeButtonOutlined() {
+		return this.#properties.removeButtonOutlined;
+	}
+
 	get menuSelectPageText() {
 		return this.#properties.menuSelectPageText;
 	}
@@ -493,7 +493,7 @@ class WUIViewDatalist {
 	}
 
 	set sort(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.sort = value;
 		}
 	}
@@ -553,27 +553,21 @@ class WUIViewDatalist {
 		}
 	}
 
+	set formFieldMode(value) {
+		if (typeof (value) === "string" && value.match(/^(stack|inline|auto)$/i)) {
+			this.#properties.formFieldMode = value.toLowerCase();
+		}
+	}
+
 	set formFieldStyle(value) {
 		if (typeof (value) === "string" && value.match(/^(fill|roundfill|border|roundborder|line)$/i)) {
 			this.#properties.formFieldStyle = value.toLowerCase();
 		}
 	}
 
-	set formHeaderButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formHeaderButtonStyle = value.toLowerCase();
-		}
-	}
-
-	set formBodyButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formBodyButtonStyle = value.toLowerCase();
-		}
-	}
-
-	set formFooterButtonStyle(value) {
-		if (typeof (value) === "string" && value.match(/^(none|join)$/i)) {
-			this.#properties.formFooterButtonStyle = value.toLowerCase();
+	set formHeaderJoinButton(value) {
+		if (typeof (value) === "boolean") {
+			this.#properties.formHeaderJoinButton = value;
 		}
 	}
 
@@ -584,7 +578,7 @@ class WUIViewDatalist {
 	}
 
 	set listRowFormat(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.listRowFormat = value;
 		}
 	}
@@ -608,7 +602,7 @@ class WUIViewDatalist {
 	}
 
 	set tableRowFormat(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.tableRowFormat = value;
 		}
 	}
@@ -662,7 +656,7 @@ class WUIViewDatalist {
 	}
 
 	set searchStaticMatch(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.searchStaticMatch = value;
 		}
 	}
@@ -739,6 +733,12 @@ class WUIViewDatalist {
 		}
 	}
 
+	set removeButtonOutlined(value) {
+		if (typeof (value) === "boolean") {
+			this.#properties.removeButtonOutlined = value;
+		}
+	}
+
 	set menuSelectPageText(value) {
 		if (typeof (value) === "string") {
 			this.#properties.menuSelectPageText = value;
@@ -806,37 +806,37 @@ class WUIViewDatalist {
 	}
 
 	set onPrint(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onPrint = value;
 		}
 	}
 
 	set onChoose(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onChoose = value;
 		}
 	}
 
 	set onFilter(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onFilter = value;
 		}
 	}
 
 	set onAdd(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onAdd = value;
 		}
 	}
 
 	set onRemove(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onRemove = value;
 		}
 	}
 
 	set onSelectOption(value) {
-		if (typeof (value) === "function" || value == null) {
+		if (typeof (value) === "function" || value === null) {
 			this.#properties.onSelectOption = value;
 		}
 	}
@@ -923,7 +923,7 @@ class WUIViewDatalist {
 			}
 			if (!htmlElements.modalBody) {
 				htmlElements.modalBody = document.createElement("div");
-				htmlElements.modalBody.classList.add("body");
+				htmlElements.modalBody.classList.add("body", "scroll");
 				htmlElements.modalBox.append(htmlElements.modalBody);
 			}
 			if (!htmlElements.modalForm) {
@@ -992,6 +992,7 @@ class WUIViewDatalist {
 					htmlElements.searchField.classList.add("field", "icon-right");
 					htmlElements.search.append(htmlElements.searchField);
 				}
+				htmlElements.searchField.classList.add("stack");
 				if (!htmlElements.searchInput) {
 					htmlElements.searchInput = document.createElement("input");
 					htmlElements.searchInput.type = "text";
@@ -1017,12 +1018,12 @@ class WUIViewDatalist {
 				}
 				if (this.addable && !htmlElements.addButton) {
 					htmlElements.addButton = document.createElement("button");
-					htmlElements.addButton.classList.add("wui-button", "submit", "add");
+					htmlElements.addButton.classList.add("wui-button", "add");
 					htmlElements.options.append(htmlElements.addButton);
 				}
 				if (this.removable && !htmlElements.removeButton) {
 					htmlElements.removeButton = document.createElement("button");
-					htmlElements.removeButton.classList.add("wui-button", "warning", "remove");
+					htmlElements.removeButton.classList.add("wui-button", "danger", "remove");
 					htmlElements.options.append(htmlElements.removeButton);
 				}
 				if (!htmlElements.menuSelectpicker) {
@@ -1060,7 +1061,6 @@ class WUIViewDatalist {
 
 	#buildComponents() {
 		const { modal, modalForm, applyButton, clearButton, mainForm, list, table, prevButton, nextButton, filterButton, addButton, removeButton, menuSelectpicker } = this.#htmlElements;
-		const colors = WUIViewDatalist.colors;
 		const viewSel = this.selector;
 		const modalSel = this.modalSelector;
 		const onChoose = (index, id, enabled, row) => {
@@ -1088,20 +1088,23 @@ class WUIViewDatalist {
 		}) : null;
 		this.#wuiComponents.modalForm = modalForm instanceof HTMLFormElement ? new WUIForm({
 			selector: modalSel + " > .box > .body > .wui-form",
-			bodyItems: [{ items: this.filterInputs }],
+			bodyItems: this.filterInputs.reduce((sets, item) => {
+				if (sets.length === 0 || item.type === "legend") {
+					sets.push({ items: [] });
+				}
+				sets.at(-1).items.push(item);
+				return sets;
+			}, []),
+			fieldMode: this.formFieldMode,
 			fieldStyle: this.formFieldStyle,
-			headerButtonStyle: this.formHeaderButtonStyle,
-			bodyButtonStyle: this.formBodyButtonStyle,
-			footerButtonStyle: this.formFooterButtonStyle,
 			submit: false,
 			onSubmit: () => { this.#applyFilter(); }
 		}) : null;
 		this.#wuiComponents.mainForm = mainForm instanceof HTMLFormElement ? new WUIForm({
 			selector: viewSel + " > .wui-form",
+			fieldsetBackground: false,
+			fieldMode: this.formFieldMode,
 			fieldStyle: this.formFieldStyle,
-			headerButtonStyle: this.formHeaderButtonStyle,
-			bodyButtonStyle: this.formBodyButtonStyle,
-			footerButtonStyle: this.formFooterButtonStyle,
 			submit: false
 		}) : null;
 		this.#wuiComponents.list = this.type.match(/list|dual/) && list instanceof HTMLDivElement ? new WUIList({
@@ -1109,7 +1112,7 @@ class WUIViewDatalist {
 			columns: this.listColumns,
 			buttons: [...this.listButtons, ...(this.removable ? [{
 				iconClass: (this.removeButtonIconClass || "wui-icon trash-fill"),
-				bgcolor: colors.warning,
+				danger: true,
 				onClick: (_, id) => {
 					if (typeof (this.onRemove) === "function") {
 						this.onRemove([id]);
@@ -1134,6 +1137,7 @@ class WUIViewDatalist {
 			selector: viewSel + " .wui-button.prev",
 			iconClass: "wui-icon arrowhead-left-line",
 			enabled: false,
+			join: this.formHeaderJoinButton,
 			onClick: () => { this.prevPage(); },
 			onDblClick: () => { this.firstPage(); }
 		}) : null;
@@ -1141,6 +1145,7 @@ class WUIViewDatalist {
 			selector: viewSel + " .wui-button.next",
 			iconClass: "wui-icon arrowhead-right-line",
 			enabled: false,
+			join: this.formHeaderJoinButton,
 			onClick: () => { this.nextPage(); },
 			onDblClick: () => { this.lastPage(); }
 		}) : null;
@@ -1148,6 +1153,7 @@ class WUIViewDatalist {
 			selector: viewSel + " .wui-button.filter",
 			iconClass: "wui-icon filter-lg-line",
 			selectable: true,
+			join: this.formHeaderJoinButton,
 			onClick: selected => {
 				const { modal } = this.#wuiComponents;
 				if (selected) {
@@ -1166,6 +1172,7 @@ class WUIViewDatalist {
 			text: this.addButtonText,
 			textClass: "wui-language",
 			textData: this.addButtonTextData,
+			join: this.formHeaderJoinButton,
 			onClick: () => {
 				if (typeof (this.onAdd) === "function") {
 					this.onAdd();
@@ -1175,7 +1182,9 @@ class WUIViewDatalist {
 		this.#wuiComponents.removeButton = this.removable && removeButton instanceof HTMLButtonElement ? new WUIButton({
 			selector: viewSel + " .wui-button.remove",
 			iconClass: (this.removeButtonIconClass || "wui-icon trash-line") + " float-left",
-			warning: true,
+			danger: true,
+			outlined: this.removeButtonOutlined,
+			join: this.formHeaderJoinButton,
 			enabled: false,
 			onClick: () => {
 				if (this.type.match(/table|dual/) && typeof (this.onRemove) === "function") {
@@ -1453,7 +1462,7 @@ class WUIViewDatalist {
 	print() {
 		const htmlElement = this.#htmlElement;
 		const { message } = this.#htmlElements;
-		const { table, list, prevButton, nextButton, menuSelectpicker } = this.#wuiComponents;
+		const { table, list, prevButton, nextButton, addButton, menuSelectpicker } = this.#wuiComponents;
 		const isStatic = typeof (this.data) !== "function";
 		const isEmpty = this.#items.length === 0;
 		if (isStatic) {
@@ -1483,6 +1492,9 @@ class WUIViewDatalist {
 		}
 		if (htmlElement instanceof HTMLDivElement) {
 			htmlElement.classList.toggle("empty", isEmpty);
+		}
+		if (addButton !== null) {
+			addButton.join = this.formHeaderJoinButton && !isEmpty;
 		}
 		if (message instanceof HTMLDivElement) {
 			message.style.display = isEmpty ? "block" : "none";
@@ -1524,7 +1536,11 @@ class WUIViewDatalist {
 			const componente = this.#wuiComponents[name];
 			if (componente) {
 				componente.lang = this.lang;
-				if (item.type === "wui-datepicker") {
+				if (item.type === "wui-selectpicker" && Array.isArray(item.properties?.options) && item.properties.options.every(option => option.value === "" || typeof (option.text) === "string")) {
+					const value = componente.value;
+					componente.setOptions(item.properties.options);
+					componente.value = value;
+				} else if (item.type === "wui-datepicker") {
 					componente.locale = this.locale;
 				}
 			}
@@ -1638,9 +1654,9 @@ class WUIViewDatalist {
 
 	#closeFilterPickers(target = "") {
 		Object.keys(this.#wuiComponents).filter(name => name !== target && name.match(/picker/)).forEach(name => {
-			const pikeer = this.#wuiComponents[name];
-			if (typeof pikeer.close === "function") {
-				pikeer.close();
+			const picker = this.#wuiComponents[name];
+			if (typeof (picker.close) === "function") {
+				picker.close();
 			}
 		});
 	}
@@ -1665,30 +1681,33 @@ HTML output:
 	<form action="javascript:" autocomplete="off" novalidate class="wui-form (fill-fields|border-fields|line-fields)[ round-fields]">
 		<div class="header">
 			<fieldset class="buttons paging">
-				<button class="wui-button prev">
+				<button class="wui-button prev[ join]">
 					<div class="wui-icon arrowhead-left-line"></div>
 				</button>
-				<button class="wui-button next">
+				<button class="wui-button next[ join]">
 					<div class="wui-icon arrowhead-right-line"></div>
 				</button>
 			</fieldset>
 			<fieldset class="search">
-				<div class="field icon-right">
+				<div class="field stack icon-right">
 					<input type="text" name="key">
 					<div class="wui-icon search-line"></div>
 				</div>
 			</fieldset>
 			<fieldset class="buttons options">
-				<button class="wui-button filter">
+				<button class="wui-button filter[ join]">
 					<div class="wui-icon filter-lg-line"></div>
 				</button>
-				<button class="wui-button submit add">
+				<button class="wui-button add[ join]">
 					<div class="{addButtonIconClass} float-left"></div>
 					<span class="wui-language" data-key="{addButtonTextData}"></span>
 				</button>
-				<button class="wui-button warning remove">
+				<button class="wui-button danger remove[ outlined][ join]">
 					<div class="{removeButtonIconClass} float-left"></div>
 				</button>
+				<div class="wui-selectpicker menu">
+					<select></select>
+				</div>
 			</fieldset>
 		</div>
 		<div class="body scroll">

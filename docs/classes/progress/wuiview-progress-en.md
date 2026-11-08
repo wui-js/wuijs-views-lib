@@ -20,9 +20,9 @@ Modal progress view with label, `<progress>` bar (determinate or indeterminate),
 
 | Class       | Version | Description |
 | ----------- |:-------:| ----------- |
-| `WUIModal`  | `0.13`  | Modal in `message` mode that holds the view. Required. |
-| `WUIButton` | `0.16`  | Cancel button. Required. |
-| `WUIForm`   | `0.15`  | Styles of the form that holds the progress bar (CSS only; the view does not instantiate `WUIForm`). Required. |
+| `WUIModal`  | `0.14`  | Modal in `message` mode that holds the view. Required. |
+| `WUIButton` | `0.17`  | Cancel button. Required. |
+| `WUIForm`   | `0.16`  | Styles of the form that holds the progress bar (CSS only; the view does not instantiate `WUIForm`). Required. |
 
 ## Constructor
 
@@ -43,9 +43,6 @@ The constructor creates the modal (`div.wui-modal.message`) at the end of `<body
 | modalPriority         | `boolean`        | `true`                | (get/set)<br><br>Modal priority over other open modals. |
 | modalSelector         | `string`         | `"#{modalId}"`        | (get)<br><br>CSS selector of the modal. |
 | formFieldStyle        | `string`         | `"fill"`              | (get/set)<br><br>Form field style: `fill`, `roundfill`, `border`, `roundborder` or `line` (equivalent to `WUIForm`'s `fieldStyle`). |
-| formHeaderButtonStyle | `string`         | `"none"`              | (get/set)<br><br>Form header button style: `none` or `join`. |
-| formBodyButtonStyle   | `string`         | `"none"`              | (get/set)<br><br>Form body button style: `none` or `join`. |
-| formFooterButtonStyle | `string`         | `"none"`              | (get/set)<br><br>Form footer button style: `none` or `join`. |
 | labelText             | `string`         | `""`                  | (get/set)<br><br>Label text above the progress bar. |
 | labelTextData         | `object`         | `{}`                  | (get/set)<br><br>`data-*` attributes of the label (for example, `{ key: "progress.label" }` for `WUILanguage`). |
 | cancelButtonHidden    | `boolean`        | `false`               | (get/set)<br><br>Hides the cancel button. |
